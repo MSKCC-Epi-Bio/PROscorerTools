@@ -14,9 +14,10 @@
 #'   developers to facilitate the development and improvement of the package.
 #'
 #' @details Functions with prefix \code{chk_} simply check the argument and
-#'   return \code{TRUE} or \code{FALSE}.  Functions with the prefix
-#'   \code{chkstop_} check the argument and, if \code{FALSE}, stop execution and
-#'   display an error message to help the user pinpoint the problem.
+#'   return \code{TRUE} if the argument is OK, or \code{FALSE} if the argument
+#'   fails the check.  Functions with the prefix \code{chkstop_} check the
+#'   argument and, if \code{FALSE}, stop execution and display an error message
+#'   to help the user pinpoint the problem.
 #'
 #' @param df A data frame, such as the one given \code{\link{scoreScale}}
 #'
@@ -39,9 +40,10 @@
 #' @param dfItems A data frame with only items, created and used by
 #'   \code{\link{scoreScale}} as an interim step in scoring a scale
 #'
-#' @return Functions with prefix \code{chk_} return \code{TRUE} or \code{FALSE}.
-#'   Functions with the prefix \code{chkstop_} print an error message and stop
-#'   the execution of the function in which they are embedded.
+#' @return Functions with prefix \code{chk_} return \code{TRUE} if the argument
+#'   is OK, or \code{FALSE} if the argument fails the check. Functions with the
+#'   prefix \code{chkstop_} print an error message and stop the execution of the
+#'   function in which they are embedded.
 #'
 #' @export
 #' @name processArgs
@@ -168,14 +170,14 @@ chkstop_revitems <- function(df, dfItems, revitems, items, minmax) {
 #' @keywords internal
 #' @rdname processArgs
 chk_imin <- function(dfItems, imin) {
-  (min(dfItems, na.rm = TRUE) < imin)
+  !(min(dfItems, na.rm = TRUE) < imin)
 }
 
 #' @export
 #' @keywords internal
 #' @rdname processArgs
 chk_imax <- function(dfItems, imax) {
-  (max(dfItems, na.rm = TRUE) > imax)
+  !(max(dfItems, na.rm = TRUE) > imax)
 }
 
 
@@ -195,11 +197,11 @@ chkstop_minmax <- function(dfItems, minmax) {
     stop("'minmax' should be c(min, max).
            Your max is not greater than your min.")
   }
-  if (chk_imin(dfItems, imin = imin)) {
+  if (!chk_imin(dfItems, imin = imin)) {
     stop(sprintf("The minimum value you gave for the items in 'minmax' is %s,
          but you have at least one value lower than this.", imin))
   }
-  if (chk_imax(dfItems, imax = imax)) {
+  if (!chk_imax(dfItems, imax = imax)) {
     stop(sprintf("The maximum value you gave for the items in 'minmax' is %s,
          but you have at least one value higher than this.", imax))
   }

@@ -37,10 +37,10 @@ These functions are used internally by other PROscorerTools
   experimentation.  If you use these functions, be warned that they will
   likely change in future versions of the package in ways that may not be
   compatible with your usage.  They will also be made invisible to users in
-  future version of the \code{\link{PROscorerTools}} package. The only reason they
-  are visible to users in these initial versions of the package is to make
-  the internals of the package more transparent to potential developers to
-  facilitate the development and improvement of the package.
+  future version of the \code{\link{PROscorerTools}} package. The only reason
+  they are visible to users in these initial versions of the package is to
+  make the internals of the package more transparent to potential developers
+  to facilitate the development and improvement of the package.
 }
 \keyword{internal}
 

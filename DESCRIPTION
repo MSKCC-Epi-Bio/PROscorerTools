@@ -1,18 +1,19 @@
 Package: PROscorerTools
 Type: Package
-Title: Tools to Score Patient-Reported Outcome (PRO) Measures and Other Psychometric Instruments
+Title: Tools to Score Patient-Reported Outcome (PRO) and Other Psychometric Measures
 Version: 0.0.1.9000
 Authors@R: person("Ray", "Baser", email="ray.stats@gmail.com", role=c("aut", "cre"))
-Description: Provides a set of reliable and flexible tools to score PRO, QoL, 
-    and other psychometric measures.  The scoreScale function can be used 
-    to score most single-scale measures.  Additionally, it and the other 
-    PROscorerTools functions can be used together to write new functions 
-    that score more complex measures.  The PROscorerTools functions are the 
-    building blocks of the scoring functions in the PROscorer package.  Users 
-    are encouraged to use PROscorerTools to write scoring functions for their 
+Description: Provides a set of reliable and flexible tools to score 
+    patient-reported outcome (PRO), Quality of Life (QoL), and other 
+    psychometric and psychological measures.  The 'scoreScale' function can be 
+    used to score most single-scale measures.  Additionally, it and the other 
+    'PROscorerTools' functions can be used together to write new functions 
+    that score more complex measures.  The 'PROscorerTools' functions are the 
+    building blocks of the scoring functions in the 'PROscorer' package.  Users 
+    are encouraged to use 'PROscorerTools' to write scoring functions for their 
     favorite PRO-like instruments, and to submit these functions for inclusion 
-    in PROscorer (a tutorial vignette will be added soon).  The long-term 
-    vision for the PROscorerTools and PROscorer packages is to provide an 
+    in 'PROscorer' (a tutorial vignette will be added soon).  The long-term 
+    vision for the 'PROscorerTools' and 'PROscorer' packages is to provide an 
     easy-to-use system to facilitate the incorporation of PRO measures into 
     research studies in a scientifically rigorous and reproducible manner.  
     These packages and their vignettes are intended to help establish and 
@@ -26,3 +27,4 @@ LazyData: true
 URL: http://github.com/raybaser/PROscorerTools
 BugReports: http://github.com/raybaser/PROscorerTools/issues
 RoxygenNote: 5.0.1
+Suggests: testthat

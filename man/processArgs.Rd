@@ -48,9 +48,10 @@ chkstop_minmax(dfItems, minmax)
 \item{imax}{Maximum possible item value}
 }
 \value{
-Functions with prefix \code{chk_} return \code{TRUE} or \code{FALSE}.
-  Functions with the prefix \code{chkstop_} print an error message and stop
-  the execution of the function in which they are embedded.
+Functions with prefix \code{chk_} return \code{TRUE} if the argument
+  is OK, or \code{FALSE} if the argument fails the check. Functions with the
+  prefix \code{chkstop_} print an error message and stop the execution of the
+  function in which they are embedded.
 }
 \description{
 Functions that are used internally within other
@@ -68,9 +69,10 @@ Functions that are used internally within other
 }
 \details{
 Functions with prefix \code{chk_} simply check the argument and
-  return \code{TRUE} or \code{FALSE}.  Functions with the prefix
-  \code{chkstop_} check the argument and, if \code{FALSE}, stop execution and
-  display an error message to help the user pinpoint the problem.
+  return \code{TRUE} if the argument is OK, or \code{FALSE} if the argument
+  fails the check.  Functions with the prefix \code{chkstop_} check the
+  argument and, if \code{FALSE}, stop execution and display an error message
+  to help the user pinpoint the problem.
 }
 \keyword{internal}
 

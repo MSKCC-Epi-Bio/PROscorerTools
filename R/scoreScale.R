@@ -128,7 +128,8 @@ scoreScale <- function( df,
                         keepNvalid = FALSE) {
 
 ## Check that df is a data.frame -----------------------------------
-  chkstop_df(df)
+  # chkstop_df(df)    # Or is below better?
+  chkstop_df(df = df)
 
 ## Check okmiss.  Must be between 0-1.
   chkstop_okmiss(okmiss = okmiss)
@@ -141,7 +142,8 @@ scoreScale <- function( df,
 
 
 ## Get dfItems, df of only items -----------------------------------
-  dfItems <- get_dfItems(df, items )
+  # dfItems <- get_dfItems(df, items )  # Or is below better?
+  dfItems <- get_dfItems(df = df, items = items )
 
 
 
