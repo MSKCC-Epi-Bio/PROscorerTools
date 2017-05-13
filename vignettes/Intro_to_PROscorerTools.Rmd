@@ -1,0 +1,205 @@
+---
+title: "Introduction to PROscorerTools"
+author: "Ray Baser"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to PROscorerTools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "README-"
+)
+```
+
+## Overview
+
+PROscorerTools provides tools to score patient-reported outcome (PRO) measures 
+and other quality of life (QoL) and psychometric instruments.  PROscorerTools
+also provides the building blocks of the functions in the 
+[PROscorer](https://CRAN.R-project.org/package=PROscorer) package.
+
+PROscorerTools contains several "helper" functions, each of which performs a
+specific task that is common when scoring PRO-like instruments (e.g., reverse
+coding items).  But most users will find that the `scoreScale()` function alone
+can address their scoring needs.
+
+## The `scoreScale()` Function
+
+The workhorse function in PROscorerTools is the `scoreScale()` function. Its
+basic job is to take a data frame containing responses to some items, and output
+a single score for those items.
+
+The `scoreScale()` function has simple, flexible arguments that enable it to
+handle nearly all scoring situations.
+
+__Features:__
+
+*  __Reverse Coding:__ Before calculating a score, `scoreScale()` can reverse
+code all of the items, only some specific items, or none of the items (no
+reverse coding is the default).
+
+*  __Different Types of Scores:__ Some instruments need to be scored by summing
+item responses, others by taking the mean of item responses, and others by
+re-scaling the sum or mean scores to range from 0 to 100.  All 3 of these score
+types are available in the `scoreScale()` function.
+
+*  __Calculation of Scores with Missing Items:__ For most instruments, valid
+scores can be obtained despite a certain number of missing item responses.  For
+example, on the EORTC QLQ-C30, a score can be calculated as long as at least 50%
+of items on a given scale are non-missing.  The `scoreScale()` function allows
+the user to specify the proportion of missing items that is allowed, and the
+score is prorated to be comparable to scores with no missing items.  If a
+respondent has more than the allowed proportion of missing items, then that
+respondent will be assigned a missing score (e.g., `NA`).
+
+*  __Scoring Instruments with Multiple Scores:__ More complex instruments that
+yield more than a single score can be scored by combining multiple calls to the
+`scoreScale()` function.  In fact, most of the functions in the
+[PROscorer](https://CRAN.R-project.org/package=PROscorer) package call
+`scoreScale()` multiple times.
+
+
+
+## Installation and Basic Usage
+
+Install the stable version from CRAN (recommended):
+
+```{r eval=FALSE}
+install.packages("PROscorerTools")
+```
+
+If you want to contribute to the development of the PROscorerTools or PROscorer
+packages, then you can install the development version from GitHub (generally
+NOT recommended):
+
+```{r eval=FALSE}
+devtools::install_github("raybaser/PROscorerTools")
+```
+
+Load PROscorerTools in your R workspace:
+
+```{r eval = FALSE}
+library(PROscorerTools)
+```
+
+As an example, we will use the `makeFakeData()` function to make a data frame of
+responses to 6 fake items from 20 imaginary respondents.  The created data set
+(named "dat") has an "id" variable, plus responses to 6 items (named "q1", "q2",
+etc.) from 20 imaginary respondents.  There are also missing responses ("NA")
+scattered throughout.
+
+```{r eval = FALSE}
+dat <- makeFakeData(n = 20, nitems = 6, values = 0:4, id = TRUE)
+```
+
+Below we use the `scoreScale` function to score the fake responses in "dat".  We
+use the `items` argument to tell `scoreScale` which variables are the items we
+want to score.  We will score the items by summing the responses (`type =
+"sum"`).  We will save the scores from the fake questionnaire in a data frame
+named "dat_scored".
+
+```{r eval=FALSE}
+dat_scored <- scoreScale(df = dat, items = 2:7, type = "sum")
+dat_scored
+```
+
+By default, `scoreScale` will score the items for a given respondent as long as
+the respondent is missing no more than 50% of the items.  This can be changed
+with the `okmiss` argument.  Above, `okmiss = 0.50` by default, so a respondent
+could be missing 3 of the 6 items and still be assigned a score (if missing 4 or
+more items, they were assigned a score of `NA`).  Below, we again score the
+items, but this time we allow less than half of the items to be missing to be
+scored (`okmiss = 0.49`).
+
+```{r eval=FALSE}
+dat_scored <- scoreScale(df = dat, items = 2:7, type = "sum", okmiss = 0.49)
+dat_scored
+```
+
+By default, `scoreScale` will score the items for a given respondent as long as
+the respondent is missing no more than 50% of the items.  This can be changed
+with the `okmiss` argument.  Above, `okmiss = 0.50` by default, so a respondent
+could be missing 3 of the 6 items and still be assigned a score (if missing 4 or
+more items, they were assigned a score of `NA`).  Below, we again score the
+items, but this time we allow less than half of the items to be missing to be
+scored (`okmiss = 0.49`).
+
+```{r eval=FALSE}
+dat_scored <- scoreScale(df = dat, items = 2:7, type = "sum", okmiss = 0.49)
+dat_scored
+```
+
+For more information on the `scoreScale` function, you can access its "help"
+page by typing `?scoreScale` into R.
+
+
+
+## Future Development Plans
+The PROscorer family of R packages includes PROscorer, PROscorerTools, and
+[FACTscorer](https://CRAN.R-project.org/package=FACTscorer).  My priorities for
+developing these 3 packages are:
+
+1.  Streamline how the packages check arguments and processes input to
+`scoreScale` and other custom-written scoring functions.  The current system 
+gets the job done, but it is not very pretty.  I believe that a more elegant, 
+easy-to-use system for performing these tasks (possibly using the
+[assertive](https://CRAN.R-project.org/package=assertive) package) will speed up
+the expansion of the PROscorer package (which contains custom scoring functions
+for specific, commonly-used PROs).  I hope to have a stable version of this
+system in the next major update of PROscorerTools.
+
+2.  Make the unit testing framework of PROscorer and PROscorerTools more
+comprehensive.  Most of the code underlying the PROscorer functions will be
+already be tested by the PROscorerTools tests; however, I intend to come up with
+a standard set of tests for PROscorer functions to make it easier for me and
+others to add unit tests to their scoring functions.
+
+3.  Expand PROscorer with more scoring functions for specific PROs.  I will have
+to do this for my job anyway, but writing new scoring functions will also help
+with programming #1 and #2 above.
+
+4.  Finalize the collaborative infrastructure (e.g., on GitHub) by which users
+can use PROscorerTools to write scoring functions for their favorite PROs and
+submit them for inclusion in PROscorer.  A major component of this is to add a
+few instructional vignettes, including a step-by-step guide for writing the
+scoring functions, guidelines for writing the instrument descriptions, and
+templates for writing the function documentation.
+
+5.  Update the [FACTscorer](https://CRAN.R-project.org/package=FACTscorer)
+package.  FACTscorer scores the FACT (Functional Assessment of Cancer Therapy)
+and FACIT (Functional Assessment of Chronic Illness Therapy) family of measures.  
+Before writing PROscorerTools, I had completely re-written most of the
+underlying FACTscorer code to be more foolproof and easier to update in the
+future.  I also wrote an "Instrument Descriptions" vignette, similar to what is
+included with PROscorer.  I will put the finishing touches on the FACTscorer
+update and release it as soon as the above work is done.
+
+6.  Add capability to generate IRT-based scores for PROs that use that scoring
+method.  I know many researchers that use various PROMIS measures.  They would
+prefer to use the IRT-based scoring method, but find it too difficult to
+integrate into their research workflow.  PROscorer could make IRT-based scores
+accessible to a much wider group of researchers.
+
+
+
+## Resources for More Information
+
+* You can access the "help" page for the PROscorerTools package by typing
+`?PROscorerTools` into R.
+
+* If you have any feature requests, or you want to report bugs or other strange
+behavior in PROscorerTools, please submit them to me on the [PROscorerTools
+GitHub page](https://github.com/raybaser/PROscorerTools/issues):
+
+* Check out the [PROscorerTools
+vignettes](https://CRAN.R-project.org/package=PROscorerTools).
+
+* For examples on how to use the `scoreScale` function within a more complex
+scoring function, check out the source code for some of the functions in the
+[PROscorer](https://CRAN.R-project.org/package=PROscorer) package.

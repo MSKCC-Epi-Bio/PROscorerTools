@@ -32,4 +32,3 @@ txt <- "If you use 'itemsrev' to indicate items that
 
 warning(msgWrap(msg = txt))
 }
-

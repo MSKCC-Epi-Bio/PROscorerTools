@@ -14,23 +14,22 @@ revcode(x, mn, mx)
 \item{mx}{The maximum possible value that \code{x} can take.}
 }
 \value{
-A vector of length \code{nrow(dfItems)} that contains the quantity
-  requested in \code{what} for each row of dfItems.
+A vector the same length as \code{x}, but with values reverse coded.
 }
 \description{
 Given an item (or score) and the minimum and maximum possible
-  values that the item can take, this helper function reverse codes the item.
-  For example, it turns \code{c(0, 1, 2, 3, 4)} into \code{c(4, 3, 2, 1, 0)}.
+values that the item can take, this helper function reverse codes the item.
+For example, it turns \code{c(0, 1, 2, 3, 4)} into \code{c(4, 3, 2, 1, 0)}.
 }
 \details{
 The user must supply the \emph{theoretically possible} minimum and
-  maximum values to this function (using \code{mn} and \code{mx},
-  respectively).  Some similar functions do not require users to provide the
-  minumum and maximum values, and, instead, those functions calculate the
-  minimum and maximum values from the data.  However, in cases where not all
-  of the possible item values are contained in the data, this would
-  incorrectly reverse score the items.  In the interest of scoring accuracy,
-  these arguments are required for \code{revcode}.
+maximum values to this function (using \code{mn} and \code{mx},
+respectively).  Some similar functions do not require users to provide the
+minumum and maximum values.  Instead, those functions calculate the
+minimum and maximum values from the data.  However, in cases where not all
+of the possible item values are contained in the data, this would
+incorrectly reverse score the items.  In the interest of scoring accuracy,
+these arguments are required for \code{revcode}.
 }
 \examples{
 item1 <- c(0, 1, 2, 3, 4)
@@ -38,4 +37,3 @@ revcode(item1, 0, 4)
 item2 <- c(0, 1, 2, 3, 0)
 revcode(item2, 0, 4)
 }
-

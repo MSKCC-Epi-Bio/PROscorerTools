@@ -1,17 +1,13 @@
-#' @title Get certain objects needed internally by other PROscorerTools functions
+#' @title Get a data frame with only items from user input
 #'
-#' @description These functions are used internally by other PROscorerTools
-#'   functions, particularly \code{\link{scoreScale}}, to get interim objects
-#'   needed for \code{\link{scoreScale}} to do its job.  Only developers wishing
-#'   to contribute to the \code{\link{PROscorerTools}} package should use these
-#'   functions.  Even developers should avoid using them for anything but
-#'   experimentation.  If you use these functions, be warned that they will
-#'   likely change in future versions of the package in ways that may not be
-#'   compatible with your usage.  They will also be made invisible to users in
-#'   future version of the \code{\link{PROscorerTools}} package. The only reason
-#'   they are visible to users in these initial versions of the package is to
-#'   make the internals of the package more transparent to potential developers
-#'   to facilitate the development and improvement of the package.
+#' @description Given a data frame and an item index, returns a data frame
+#'   containing only the items.  These functions are used internally by other
+#'   PROscorerTools functions, particularly \code{\link{scoreScale}}.  Their job
+#'   is to return a data frame containing only the items to be scored.  These
+#'   functions are also used in the scoring functions in the
+#'   \pkg{PROscorer} package to help process the user's input.  These
+#'   functions will be of interest mainly to developers wishing to contribute to
+#'   the \pkg{PROscorer} package.
 #'
 #'
 #' @param df A data frame given as the argument to \code{\link{scoreScale}}
@@ -31,8 +27,6 @@
 #'   scored. In the case of \code{get_dfItemsrev}, the specified items will be
 #'   reverse scored in the returned data frame.
 #'
-#' @keywords internal
-#'
 #' @export
 get_dfItems <- function(df, items) {
   ##  Get dfItems, a df with only the items
@@ -42,7 +36,6 @@ get_dfItems <- function(df, items) {
   if (!is.null(items)) {
     dfItems <- df[items]
   }
-  ## Maybe put this in get_dfItems?
   if (nrow(dfItems) != nrow(df)) {
     stop("Something went wrong, you may have discovered a bug in the function.
          Please contact Ray Baser with the details so he can figure out what
@@ -54,8 +47,6 @@ get_dfItems <- function(df, items) {
 ### Maybe make get_dfItemsrev have "items" arg instead of "dfItems", and call
 ###   get_dfItems within it?
 #' @export
-#'
-#' @keywords internal
 #'
 #' @rdname get_dfItems
 get_dfItemsrev <- function(df, dfItems, revitems, minmax) {

@@ -17,11 +17,10 @@ A character vector of sequentially numbered item names.
 }
 \description{
 Takes a prefix (e.g., "Q") and the number of items you want
-  (e.g., 3), and returns a vector of item names (e.g., c("Q1", "Q2", "Q3")).
+(e.g., 3), and returns a vector of item names (e.g., c("Q1", "Q2", "Q3")).
 }
 \examples{
 makeItemNames("q", 3)
 itemNames <- makeItemNames("item", 7)
 itemNames
 }
-

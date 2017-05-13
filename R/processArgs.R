@@ -206,29 +206,31 @@ chkstop_minmax <- function(dfItems, minmax) {
          but you have at least one value higher than this.", imax))
   }
 
-
-  if (imin < min(dfItems, na.rm = TRUE) ) {
-    warning(paste(strwrap(sprintf(
-      "The lower bound you gave to 'minmax', %s, is smaller than the
-      minimum item response observed in the data you provided to 'df'.
-      Please double-check that you gave the correct lower bound to 'minmax'
-      (it should be the value of the lowest possible item response),
-      and that the item responses are coded correctly in your data.
-      If both are correct, you can ignore this warning.", imin),
-      exdent = 2),
-      collapse = "\n"))
-  }
-  if (imax > max(dfItems, na.rm = TRUE) ) {
-    warning(paste(strwrap(sprintf(
-      "The upper bound you gave to 'minmax', %s, is larger than the
-      largest item response observed in the data you provided to 'df'.
-      Please double-check that you gave the correct upper bound to 'minmax'
-      (it should be the value of the highest possible item response),
-      and that the item responses are coded correctly in your data.
-      If both are correct, you can ignore this warning.", imax),
-      exdent = 2),
-      collapse = "\n"))
-  }
+## Remove these warnings into a customizable function that PROscorer functions 
+##   can call when checking arguments
+  
+#  if (imin < min(dfItems, na.rm = TRUE) ) {
+#    warning(paste(strwrap(sprintf(
+#      "The lower bound you gave to 'minmax', %s, is smaller than the
+#      minimum item response observed in the data you provided to 'df'.
+#      Please double-check that you gave the correct lower bound to 'minmax'
+#      (it should be the value of the lowest possible item response),
+#      and that the item responses are coded correctly in your data.
+#      If both are correct, you can ignore this warning.", imin),
+#      exdent = 2),
+#      collapse = "\n"))
+#  }
+#  if (imax > max(dfItems, na.rm = TRUE) ) {
+#    warning(paste(strwrap(sprintf(
+#      "The upper bound you gave to 'minmax', %s, is larger than the
+#      largest item response observed in the data you provided to 'df'.
+#      Please double-check that you gave the correct upper bound to 'minmax'
+#      (it should be the value of the highest possible item response),
+#      and that the item responses are coded correctly in your data.
+#      If both are correct, you can ignore this warning.", imax),
+#      exdent = 2),
+#      collapse = "\n"))
+#  }
 }
 
 

@@ -1,10 +1,10 @@
-#' @title Argument Checkers for Custom Scoring Functions
+#' @title Checks the number and values of items passed to custom scoring functions
 #'
 #' @description These functions are designed to used within custom scoring
-#' functions to help check the arguments passed to those functions. Typically,
-#' these argument checkers will be used within the body of a scoring function
-#' before calling the \code{\link{scoreScale}} function to handle the bulk of
-#' the work.  See Details.
+#'   functions to help check the arguments passed to those functions. Typically,
+#'   these argument checkers will be used within the body of a custom scoring
+#'   function before calling the \code{\link{scoreScale}} function to handle the
+#'   bulk of the work.  See Details.
 #'
 #' \itemize{
 #'   \item \code{chk_nitems} checks if \code{dfItems} contains the correct
@@ -33,6 +33,12 @@
 #'   values), the programmer should run some additional checks on the arguments
 #'   that are not already built-in to \code{\link{scoreScale}}.
 #'
+#' @note
+#'   \strong{Use with caution!}  These functions work, but they might be
+#'   deprecated in future updates of the package.  I am hoping to come up with a
+#'   more streamlined, user-friendly system for checking arguments and input
+#'   values.  Until then, these functions get the job done, but not as
+#'   gracefully as I would like.
 #'
 #' @param dfItems A data frame with only the items to be scored.
 #'
@@ -56,13 +62,12 @@
 #' chk_values(dfGood, 0:3)
 #'
 #' @export
-#' @name checkers
 chk_nitems <- function(dfItems, nitems) {
   ncol(dfItems) == nitems
 }
 
 #' @export
-#' @rdname checkers
+#' @rdname chk_nitems
 chkstop_nitems <- function(dfItems, nitems) {
   if(!chk_nitems(dfItems = dfItems, nitems = nitems)) {
     stop("There are either too many or too few items in your data frame.")
@@ -74,7 +79,7 @@ chkstop_nitems <- function(dfItems, nitems) {
 
 #' @param values A vector of all of the possible values that the items can take.
 #' @export
-#' @rdname checkers
+#' @rdname chk_nitems
 chk_values <- function(dfItems, values) {
   chk_itemvalues <- function(item, values) {
     all(item %in% values)
@@ -83,7 +88,7 @@ chk_values <- function(dfItems, values) {
 }
 
 #' @export
-#' @rdname checkers
+#' @rdname chk_nitems
 chkstop_values <- function(dfItems, values) {
   if(!chk_values(dfItems = dfItems, values = values)) {
     stop("At least one of your items has a value that is not allowed.")

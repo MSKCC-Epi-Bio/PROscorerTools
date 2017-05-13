@@ -31,11 +31,13 @@ is required.}
 
 \item{minmax}{(optional) A vector of 2 integers of the format
 \code{c(itemMin, itemMax)}, indicating the minimum and maximum possible
-item responses, e.g., \code{c(0, 4)}.  This is required only when
-\code{revitems} is used and not set to \code{FALSE}.  This function assumes
-that all items have the same response range.  If this is not the case, then
-manually reverse code your items in df before using this function, and omit
-the \code{revitems} and \code{minmax} arguments.}
+item responses, e.g., \code{c(0, 4)}.  This argument is required if
+\code{type} equals \code{"pomp"} (the default \code{type}) or \code{"100"}.
+This is also required only \code{revitems} is used and not set to
+\code{FALSE}.  This function assumes that all items have the same response
+range.  If this is not the case, then manually reverse code your items in
+df before using this function, and omit the \code{revitems} and
+\code{minmax} arguments.}
 
 \item{okmiss}{The maximum proportion of items that a respondent is allowed to
 have missing and still have their non-missing items scored (and prorated).
@@ -58,80 +60,98 @@ scored scale.  If this argument is omitted, the scale will be named
 number of valid, non-missing items for each respondent should be returned
 in a data frame with the scale score.  The default is \code{FALSE}.  Set to
 \code{TRUE} to return this variable, which will be named \code{"scalename_N"}
-(with whatever name you gave to the \code{scalename} argument).}
+(with whatever name you gave to the \code{scalename} argument).  Most users
+should probably omit this argument entirely.  This argument might be
+removed from future versions of the package, so please let me know if you
+think this argument useful and would rather it remain a part of the
+function.}
 }
 \value{
 A data frame with a variable containing the scale score.  Optionally,
-  the data frame can additionally have a variable containing the number of
-  valid item responses for each respondent.
+the data frame can additionally have a variable containing the number of
+valid item responses for each respondent.
 }
 \description{
 \code{scoreScale} is a flexible function that can be used to
-  calculate a single scale score from a set of items.
+calculate a single scale score from a set of items.
 }
 \details{
 The \code{scoreScale} function is the workhorse of the
-  \pkg{\link{PROscorerTools}} package, and it is intented to be the building
-  block of other, more complex scoring functions tailored to specific PRO
-  measures.  It can handle items that need to be reverse coded before
-  scoring, and it has options for handling missing item responses.  It can
-  use three different methods to score the items: (1) sum scoring (the sum of
-  the item scores), mean scoring (the mean of the item scores), and 0-100
-  scoring (like sum or mean scoring, except that the scores are rescaled to
-  range from 0 to 100).  This latter method is also called "POMP" scoring
-  (Percent Of the Maximum Possible), and is the default scoring method of
-  \code{scoreScale} since it has numerous advantages over other scoring
-  methods (see References).
+\pkg{\link{PROscorerTools}} package, and it is intented to be the building
+block of other, more complex scoring functions tailored to specific PRO
+measures.  It can handle items that need to be reverse coded before
+scoring, and it has options for handling missing item responses.  It can
+use three different methods to score the items: (1) sum scoring (the sum of
+the item scores), mean scoring (the mean of the item scores), and 0-100
+scoring (like sum or mean scoring, except that the scores are rescaled to
+range from 0 to 100).  This latter method is also called "POMP" scoring
+(Percent Of the Maximum Possible), and is the default scoring method of
+\code{scoreScale} since it has numerous advantages over other scoring
+methods (see References).
 
-  This function assumes that all items have the same numeric response range.
-  It can still be used to score scales comprised of items with different
-  response ranges with two caveats:
-  \itemize{
-    \item First, if your items have different ranges of possible response
-      values AND some need to be reverse coded before scoring, you should not
-      use this function's \code{revitems} plus \code{minmax} arguments to
-      reverse your items.  Instead, you should manually reverse code your
-      items (see \code{\link{revcode}}) before using \code{scoreScale}, and omit the
-      \code{revitems} and \code{minmax} arguments.
-    \item Second, depending on how the different item response options are
-      numerically coded, some items might contribute more/less to the scale
-      score than others.  For example, consider a questionnaire where the
-      first item has responses coded as "0 = No, 1 = Yes" and the rest of the
-      items are coded as "0 = Never, 1 = Sometimes, 2 = Always".  The first
-      item will contribute relatively less weight to the scale score than the
-      other items because its maximum value is only 1, compared to 2 for the
-      other items.  This state of affairs is not ideal, and you might want to
-      reconsider including items with different response ranges in one scale
-      score (if you have that option).
-  }
+This function assumes that all items have the same numeric response range.
+It can still be used to score scales comprised of items with different
+response ranges with two caveats:
+\itemize{
+\item First, if your items have different ranges of possible response
+values AND some need to be reverse coded before scoring, you should not
+use this function's \code{revitems} plus \code{minmax} arguments to
+reverse your items.  Instead, you should manually reverse code your
+items (see \code{\link{revcode}}) before using \code{scoreScale}, and omit the
+\code{revitems} and \code{minmax} arguments.
+\item Second, depending on how the different item response options are
+numerically coded, some items might contribute more/less to the scale
+score than others.  For example, consider a questionnaire where the
+first item has responses coded as "0 = No, 1 = Yes" and the rest of the
+items are coded as "0 = Never, 1 = Sometimes, 2 = Always".  The first
+item will contribute relatively less weight to the scale score than the
+other items because its maximum value is only 1, compared to 2 for the
+other items.  This state of affairs is not ideal, and you might want to
+reconsider including items with different response ranges in one scale
+score (if you have that option).
+}
 }
 \section{Further Explanation of Arguments}{
 
-  The \code{scoreScale} function technically has only 1 required argument,
-  \code{df}.  If none of your items need to be reverse coded before scoring,
-  your items are in a data frame named \code{myData}, and \code{myData}
-  contains ONLY the items to be scored and no non-scored variables, then
-  \code{scoreScale(myData)} is sufficient to score your items.
+The \code{scoreScale} function technically has only 1 required argument,
+\code{df}.  If none of your items need to be reverse coded before scoring,
+your items are in a data frame named \code{myData}, and \code{myData}
+contains ONLY the items to be scored and no non-scored variables, then
+\code{scoreScale(myData)} is sufficient to score your items.
 
-  In most real-world situations, however, you will likely have a data frame
-  containing a mix of items and other variables.  In this case, you should
-  additionally use the \code{items} argument to indicate which variables in
-  your data frame are the items to be scored.  For example, assume that
-  \code{myData} contains an ID variable named "ID", followed by three items
-  named "Q1", "Q2", and "Q3", none of which need to be reverse coded.  You
-  can score the scale by providing the \code{items} argument with either
-  \strong{(1)} a numeric vector with the column indexes of the items, like
-  \code{scoreScale(myData, items = 2:4)} or \code{scoreScale(myData, items =
+In most real-world situations, however, you will likely have a data frame
+containing a mix of items and other variables.  In this case, you should
+additionally use the \code{items} argument to indicate which variables in
+your data frame are the items to be scored.  For example, assume that
+\code{myData} contains an ID variable named "ID", followed by three items
+named "Q1", "Q2", and "Q3", none of which need to be reverse coded.  You
+can score the scale by providing the \code{items} argument with either
+\strong{(1)} a numeric vector with the column indexes of the items, like
+\code{scoreScale(myData, items = 2:4)} or \code{scoreScale(myData, items =
   c(2, 3, 4)}, or \strong{(2)} a character vector with the item names, like
-  \code{scoreScale(myData, items = c("Q1", "Q2", "Q3")}.
+\code{scoreScale(myData, items = c("Q1", "Q2", "Q3")}.
 }
+
 \examples{
+# Make a data frame using default settings of makeFakeData() function
+# (20 respondents, 9 items with values 0 to 4, and about 20\% missing)
 dat <- makeFakeData()
-scoreScale(dat)
+
+# First "sum" score the items, then "mean" score them
+scoreScale(dat, type = "sum")
+scoreScale(dat, type = "mean")
+
+# Must use "minmax" argument if the "type" argument is "100"
+scoreScale(dat, type = "100", minmax = c(0, 4))
+# If you omit "type", the default is "pomp" (which is identical to "100")
+scoreScale(dat, minmax = c(0, 4))
+
+# "minmax" is also required if any items need to be reverse coded for scoring
+#  Below, the first two items are reverse coded before scoring
+scoreScale(dat, type = "sum", revitems = c("q1", "q2"), minmax = c(0, 4))
 }
 \references{
 Cohen, P, Cohen, J, Aiken, LS, & West, SG. (1999). The problem of units and
 the circumstance for POMP. \emph{Multivariate Behavioral Research}, 34(3),
 315–346.
 }
-

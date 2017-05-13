@@ -77,11 +77,13 @@
 #'   is required.
 #' @param minmax (optional) A vector of 2 integers of the format
 #'   \code{c(itemMin, itemMax)}, indicating the minimum and maximum possible
-#'   item responses, e.g., \code{c(0, 4)}.  This is required only when
-#'   \code{revitems} is used and not set to \code{FALSE}.  This function assumes
-#'   that all items have the same response range.  If this is not the case, then
-#'   manually reverse code your items in df before using this function, and omit
-#'   the \code{revitems} and \code{minmax} arguments.
+#'   item responses, e.g., \code{c(0, 4)}.  This argument is required if
+#'   \code{type} equals \code{"pomp"} (the default \code{type}) or \code{"100"}.
+#'   This is also required only \code{revitems} is used and not set to
+#'   \code{FALSE}.  This function assumes that all items have the same response
+#'   range.  If this is not the case, then manually reverse code your items in
+#'   df before using this function, and omit the \code{revitems} and
+#'   \code{minmax} arguments.
 #' @param okmiss The maximum proportion of items that a respondent is allowed to
 #'   have missing and still have their non-missing items scored (and prorated).
 #'   If the proportion of missing items for a respondent is greater than
@@ -100,7 +102,11 @@
 #'   number of valid, non-missing items for each respondent should be returned
 #'   in a data frame with the scale score.  The default is \code{FALSE}.  Set to
 #'   \code{TRUE} to return this variable, which will be named \code{"scalename_N"}
-#'   (with whatever name you gave to the \code{scalename} argument).
+#'   (with whatever name you gave to the \code{scalename} argument).  Most users
+#'   should probably omit this argument entirely.  This argument might be
+#'   removed from future versions of the package, so please let me know if you
+#'   think this argument useful and would rather it remain a part of the
+#'   function.
 #'
 #' @return A data frame with a variable containing the scale score.  Optionally,
 #'   the data frame can additionally have a variable containing the number of
@@ -116,8 +122,22 @@
 #' @export
 #'
 #' @examples
+#' # Make a data frame using default settings of makeFakeData() function
+#' # (20 respondents, 9 items with values 0 to 4, and about 20% missing)
 #' dat <- makeFakeData()
-#' scoreScale(dat)
+#'
+#' # First "sum" score the items, then "mean" score them
+#' scoreScale(dat, type = "sum")
+#' scoreScale(dat, type = "mean")
+#'
+#' # Must use "minmax" argument if the "type" argument is "100"
+#' scoreScale(dat, type = "100", minmax = c(0, 4))
+#' # If you omit "type", the default is "pomp" (which is identical to "100")
+#' scoreScale(dat, minmax = c(0, 4))
+#'
+#' # "minmax" is also required if any items need to be reverse coded for scoring
+#' #  Below, the first two items are reverse coded before scoring
+#' scoreScale(dat, type = "sum", revitems = c("q1", "q2"), minmax = c(0, 4))
 scoreScale <- function( df,
                         items = NULL,
                         revitems = FALSE,

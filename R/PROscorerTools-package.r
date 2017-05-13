@@ -7,7 +7,7 @@
 #' @details Provides a set of reliable and flexible tools to score PRO, QoL, and
 #'   other psychometric and psychological measures.  Additionally,
 #'   \pkg{PROscorerTools} provides the infrastructure for the scoring functions
-#'   in the \pkg{\link{PROscorer}} package.
+#'   in the \pkg{PROscorer} package.
 #'
 #'   The \code{\link{scoreScale}} function is the workhorse of
 #'   \pkg{PROscorerTools}, and it can be used to score most single-scale
@@ -19,14 +19,13 @@
 #'
 #'   The \code{\link{scoreScale}} function itself is composed of other
 #'   \pkg{PROscorerTools} helper functions.  This is an intentional feature of
-#'   the \pkg{PROscorerTools} and \pkg{\link{PROscorer}} system.  It represents
-#'   the central design philosophy that all scoring functions should be
-#'   modularly composed of a small number of well-tested, reliable helper
-#'   functions.  This important feature minimizes the possibility of scoring
-#'   errors and other unexpected behaviors.  This starts with the
-#'   \code{\link{scoreScale}} function, and the benefits extend to the
-#'   \pkg{\link{PROscorer}} functions and any other scoring function that uses
-#'   \code{\link{scoreScale}} as its backbone.
+#'   the \pkg{PROscorerTools} and \pkg{PROscorer} system.  It represents the
+#'   central design philosophy that all scoring functions should be modularly
+#'   composed of a small number of well-tested, reliable helper functions.  This
+#'   important feature minimizes the possibility of scoring errors and other
+#'   unexpected behaviors.  This starts with the \code{\link{scoreScale}}
+#'   function, and the benefits extend to the \pkg{PROscorer} functions and any
+#'   other scoring function that uses \code{\link{scoreScale}} as its backbone.
 #'
 #'   Scoring procedures represent a major source of error in research studies
 #'   that rely upon PRO and similar measures.  These errors typically go
@@ -34,10 +33,10 @@
 #'   research and hindering progress in the numerous scientific fields that
 #'   conduct studies that use these measures.  A seemingly minor scoring error
 #'   can compromise measurement validity and reliability, as well as make
-#'   research results impossible to reproduce and replicate. The ultimate goal
-#'   of the \pkg{PROscorerTools} and \pkg{\link{PROscorer}} packages is to
-#'   eliminate these serious deficiencies in PRO-based research by providing a
-#'   small set of gold-standard scoring tools for PRO-like measures commonly
+#'   research results difficult to reproduce and unlikely to replicate. The
+#'   ultimate goal of the \pkg{PROscorerTools} and \pkg{PROscorer} packages is
+#'   to eliminate these serious deficiencies in PRO-based research by providing
+#'   a small set of gold-standard scoring tools for PRO-like measures commonly
 #'   used in research.
 #'
 #' @section Overview of Functions:
@@ -59,8 +58,8 @@
 #'     missing (or non-missing) for each subject.}
 #'   \item{\code{\link{rerange}}}{:  Linearly rescale a variable to have new min
 #'     and max values of the user's choosing.}
-#'   \item{\code{\link{rerange100}}}{:  Like \code{\link{rerange}}, but variable
-#'     is rescaled to range from 0 to 100.}
+#'   \item{\code{\link{rerange100}}}{:  Like \code{\link{rerange}}, but the
+#'     variable is rescaled to range from 0 to 100.}
 #'   \item{\code{\link{revcode}}}{:  Reverse code the values of an item or score.}
 #'   \item{\code{\link{makeItemNames}}}{:  Easily make a vector of item names,
 #'     e.g., \code{c("Q1", "Q2", "Q3")}.}
@@ -72,8 +71,10 @@
 #'
 #' These functions are used to check the arguments supplied to custom-written
 #' scoring functions, and to perform some minimal processing of function input.
-#' \strong{USE WITH CAUTION, IF AT ALL.}  These will probably be deprecated in a
-#' near-future version of the package.
+#' \strong{AT THIS TIME, USE WITH CAUTION, IF AT ALL.}  Most of these (if not
+#' all) will likely undergo substantial changes in a near-future version of the
+#' package, and/or be deprecated in favor of a more streamlined system (e.g.,
+#' using the \pkg{assertive} package).
 #'
 #' \itemize{
 #'   \item{\code{\link{msgWrap}}}{:  Used inside of \code{paste} to help
@@ -97,9 +98,13 @@
 #'
 #' These are internal functions used to make the \code{\link{scoreScale}}
 #' function more modular, and are used exclusively to check the arguments to
-#' that function.  They will likely be of little use to others, and will almost
-#' definitely change in a near-future version of the package.  They are
-#' documented here only for development purposes.
+#' that function.  They will likely be of little use to others, and will
+#' probably change in a near-future version of the package, or be deprecated
+#' altogether in favor of a more streamlined system (e.g., using the
+#' \pkg{assertive} package).  They are documented here only for development
+#' purposes.  \strong{NOTE}: The interface and functionality of the
+#' \code{\link{scoreScale}} function will remain stable, even if/when these
+#' functions change.
 #'
 #' \itemize{
 #'   \item{\code{\link{chkstop_df}}}{:  }
