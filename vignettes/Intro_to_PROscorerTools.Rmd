@@ -2,7 +2,10 @@
 title: "Introduction to PROscorerTools"
 author: "Ray Baser"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
+    toc_depth: 3
 vignette: >
   %\VignetteIndexEntry{Introduction to PROscorerTools}
   %\VignetteEngine{knitr::rmarkdown}
