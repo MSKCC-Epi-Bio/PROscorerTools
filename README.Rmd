@@ -11,6 +11,10 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/PROscorerTools)](https://cran.r-project.org/package=PROscorerTools)
+
+[![Travis-CI Build Status](https://travis-ci.org/raybaser/PROscorerTools.svg?branch=master)](https://travis-ci.org/raybaser/PROscorerTools)
+
 # PROscorerTools
 
 ## Overview

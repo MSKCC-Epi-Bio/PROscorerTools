@@ -1,17 +1,23 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/PROscorerTools)](https://cran.r-project.org/package=PROscorerTools)
+
+[![Travis-CI Build Status](https://travis-ci.org/raybaser/PROscorerTools.svg?branch=master)](https://travis-ci.org/raybaser/PROscorerTools)
+
 PROscorerTools
 ==============
 
 Overview
 --------
 
-PROscorerTools provides tools to score patient-reported outcome (PRO) measures and other psychometric instruments. PROscorerTools also provids the building blocks of the functions in the PROscorer package.
+PROscorerTools provides tools to score patient-reported outcome (PRO) measures and other quality of life (QoL) and psychometric instruments. PROscorerTools also provids the building blocks of the functions in the PROscorer package.
+
+PROscorerTools contains several "helper" functions, each of which performs a specific task that is common when scoring PRO-like instruments (e.g., reverse coding items). But most users will find that the `scoreScale()` function alone can address their scoring needs.
 
 The `scoreScale()` Function
 ---------------------------
 
-The core, workhorse function in PROscorerTools is the `scoreScale()` function. Its basic job is to take a data frame containing responses to some items, and output a single score for those items.
+The workhorse function in PROscorerTools is the `scoreScale()` function. Its basic job is to take a data frame containing responses to some items, and output a single score for those items.
 
 The `scoreScale()` function has simple, flexible arguments that enable it to handle nearly all scoring situations.
 

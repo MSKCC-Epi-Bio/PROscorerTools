@@ -1,7 +1,7 @@
 Package: PROscorerTools
 Type: Package
 Title: Tools to Score Patient-Reported Outcome (PRO) and Other Psychometric Measures
-Version: 0.0.0.9002
+Version: 0.0.1
 Authors@R: person("Ray", "Baser", email="ray.stats@gmail.com", role=c("aut", "cre"))
 Description: Provides a reliable and flexible toolbox to score 
     patient-reported outcome (PRO), Quality of Life (QoL), and other 
