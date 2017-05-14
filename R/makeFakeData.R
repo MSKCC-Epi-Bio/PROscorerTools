@@ -5,15 +5,15 @@
 #'   also used to create data for examples of scoring function usage.
 #'
 #' @details The item responses in the first row are all the lowest possible
-#'   value and never \code{NA}, and the responses on the 2nd row are all the
+#'   value and never \code{NA}, and the responses on the second row are all the
 #'   highest possible value and never \code{NA}.  This makes it easier to check
 #'   if the scoring function is at least getting the scores correct for subjects
 #'   with no missing values.  It also makes it easier in some cases to check
 #'   that the scoring function is properly reversing the items according to the
-#'   \code{itemsrev} argument of the scoring functionl.
+#'   \code{itemsrev} argument of the scoring function.
 #'
-#'   Although the resulting data frame can be cutomized using the arguments, the
-#'   default values are sufficient for most generic testing purposes (see
+#'   Although the resulting data frame can be customized using the arguments,
+#'   the default values are sufficient for most generic testing purposes (see
 #'   example).
 #'
 #' @param n The number of respondents (rows) in the fake data.  The default is

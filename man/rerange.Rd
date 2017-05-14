@@ -40,7 +40,7 @@ rescales a variable to range from 0 to 100.
 }
 }
 \details{
-The \code{rerange} function can rerange and reverse code a variable
+The \code{rerange} function can re-range and reverse code a variable
 all at once. If \code{rev = TRUE}, \code{score} will be reversed using
 \code{\link{revcode}} after it is re-ranged.  The same could be
 accomplished by keeping \code{rev = FALSE} and reversing the order of the

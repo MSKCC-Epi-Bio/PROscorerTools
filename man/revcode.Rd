@@ -25,7 +25,7 @@ For example, it turns \code{c(0, 1, 2, 3, 4)} into \code{c(4, 3, 2, 1, 0)}.
 The user must supply the \emph{theoretically possible} minimum and
 maximum values to this function (using \code{mn} and \code{mx},
 respectively).  Some similar functions do not require users to provide the
-minumum and maximum values.  Instead, those functions calculate the
+minimum and maximum values.  Instead, those functions calculate the
 minimum and maximum values from the data.  However, in cases where not all
 of the possible item values are contained in the data, this would
 incorrectly reverse score the items.  In the interest of scoring accuracy,

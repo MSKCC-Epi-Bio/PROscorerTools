@@ -1,10 +1,10 @@
 #' PROscorerTools
 #'
 #' @description Tools to score Patient-Reported Outcome (PRO), Quality
-#'   of Life (QoL), and other psychometric measures and
+#'   of Life (QOL), and other psychometric measures and
 #'   questionnaire-based instruments.
 #'
-#' @details Provides a set of reliable and flexible tools to score PRO, QoL, and
+#' @details Provides a set of reliable and flexible tools to score PRO, QOL, and
 #'   other psychometric and psychological measures.  Additionally,
 #'   \pkg{PROscorerTools} provides the infrastructure for the scoring functions
 #'   in the \pkg{PROscorer} package.

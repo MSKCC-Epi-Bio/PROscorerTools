@@ -4,7 +4,7 @@
 #'   calculate a single scale score from a set of items.
 #'
 #' @details The \code{scoreScale} function is the workhorse of the
-#'   \pkg{\link{PROscorerTools}} package, and it is intented to be the building
+#'   \pkg{\link{PROscorerTools}} package, and it is intended to be the building
 #'   block of other, more complex scoring functions tailored to specific PRO
 #'   measures.  It can handle items that need to be reverse coded before
 #'   scoring, and it has options for handling missing item responses.  It can
@@ -63,9 +63,9 @@
 #'   it contains non-scored variables, then you must use the \code{items}
 #'   argument to let the function know how to find your items in \code{df}.
 #' @param items (optional) A character vector with the item names, or a numeric
-#'   vector indicating the column numbers of the items in df.  If \code{items}
-#'   is omitted, then \code{scoreScale} will assume that \code{df} contains only
-#'   the items to be scored and no non-scored variables.
+#'   vector indicating the column numbers of the items in \code{df}.  If
+#'   \code{items} is omitted, then \code{scoreScale} will assume that \code{df}
+#'   contains only the items to be scored and no non-scored variables.
 #' @param revitems (optional) either \code{TRUE}, \code{FALSE}, or
 #'   a vector indicating which items in \code{df} should be reverse coded before
 #'   scoring.  If omitted or \code{FALSE} (the default), no items are reverse
@@ -82,7 +82,7 @@
 #'   This is also required only \code{revitems} is used and not set to
 #'   \code{FALSE}.  This function assumes that all items have the same response
 #'   range.  If this is not the case, then manually reverse code your items in
-#'   df before using this function, and omit the \code{revitems} and
+#'   \code{df} before using this function, and omit the \code{revitems} and
 #'   \code{minmax} arguments.
 #' @param okmiss The maximum proportion of items that a respondent is allowed to
 #'   have missing and still have their non-missing items scored (and prorated).
@@ -113,9 +113,9 @@
 #'   valid item responses for each respondent.
 #'
 #' @references
-#' Cohen, P, Cohen, J, Aiken, LS, & West, SG. (1999). The problem of units and
+#' Cohen, P, Cohen, J, Aiken, LS, & West, SG (1999). The problem of units and
 #' the circumstance for POMP. \emph{Multivariate Behavioral Research}, 34(3),
-#' 315–346.
+#' 315-346.
 
 #'
 
