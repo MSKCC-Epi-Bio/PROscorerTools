@@ -4,7 +4,7 @@ Title: Tools to Score Patient-Reported Outcome (PRO) and Other Psychometric Meas
 Version: 0.0.1
 Authors@R: person("Ray", "Baser", email="ray.stats@gmail.com", role=c("aut", "cre"))
 Description: Provides a reliable and flexible toolbox to score 
-    patient-reported outcome (PRO), Quality of Life (QoL), and other 
+    patient-reported outcome (PRO), Quality of Life (QOL), and other 
     psychometric measures. The guiding philosophy is that scoring errors can 
     be eliminated by using a limited number of well-tested, well-behaved 
     functions to score PRO-like measures. The workhorse of the package is 
