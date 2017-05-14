@@ -4,6 +4,8 @@
 
 [![Travis-CI Build Status](https://travis-ci.org/raybaser/PROscorerTools.svg?branch=master)](https://travis-ci.org/raybaser/PROscorerTools)
 
+[![Coverage Status](https://img.shields.io/codecov/c/github/raybaser/PROscorerTools/master.svg)](https://codecov.io/github/raybaser/PROscorerTools?branch=master)
+
 PROscorerTools
 ==============
 
@@ -29,7 +31,7 @@ The `scoreScale()` function has simple, flexible arguments that enable it to han
 
 -   **Calculation of Scores with Missing Items:** For most instruments, valid scores can be obtained despite a certain number of missing item responses. For example, on the EORTC QLQ-C30, a score can be calculated as long as at least 50% of items on a given scale are non-missing. The `scoreScale()` function allows the user to specify the proportion of missing items that is allowed, and the score is prorated to be comparable to scores with no missing items. If a respondent has more than the allowed proportion of missing items, then that respondent will be assigned a missing score (e.g., `NA`).
 
--   **Scoring Instruments with Multiple Scores:** More complex instruments that yield more than a single score can be scored by combining multiple calls to the `scoreScale()` function. In fact, most of the functions in the [PROscorer](https://CRAN.R-project.org/package=PROscorer) package call `scoreScale()` multiple times.
+-   **Scoring Instruments with Multiple Scores:** More complex instruments that yield more than a single score can be scored by combining multiple calls to the `scoreScale()` function. In fact, most of the functions in the **PROscorer** package call `scoreScale()` multiple times.
 
 Installation and Basic Usage
 ----------------------------
@@ -81,4 +83,4 @@ Resources for More Information
 
 -   Check out the [PROscorerTools vignettes](https://CRAN.R-project.org/package=PROscorerTools).
 
--   For examples on how to use the `scoreScale` function within a more complex scoring function, check out the source code for some of the functions in the [PROscorer](https://CRAN.R-project.org/package=PROscorer) package.
+-   For examples on how to use the `scoreScale` function within a more complex scoring function, check out the source code for some of the functions in the **PROscorer** package.

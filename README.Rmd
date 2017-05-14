@@ -15,6 +15,8 @@ knitr::opts_chunk$set(
 
 [![Travis-CI Build Status](https://travis-ci.org/raybaser/PROscorerTools.svg?branch=master)](https://travis-ci.org/raybaser/PROscorerTools)
 
+[![Coverage Status](https://img.shields.io/codecov/c/github/raybaser/PROscorerTools/master.svg)](https://codecov.io/github/raybaser/PROscorerTools?branch=master)
+
 # PROscorerTools
 
 ## Overview
@@ -57,11 +59,10 @@ score is prorated to be comparable to scores with no missing items.  If a
 respondent has more than the allowed proportion of missing items, then that
 respondent will be assigned a missing score (e.g., `NA`).
 
-*  __Scoring Instruments with Multiple Scores:__ More complex instruments that
-yield more than a single score can be scored by combining multiple calls to the
-`scoreScale()` function.  In fact, most of the functions in the
-[PROscorer](https://CRAN.R-project.org/package=PROscorer) package call
-`scoreScale()` multiple times.
+*  __Scoring Instruments with Multiple Scores:__ More complex instruments that 
+yield more than a single score can be scored by combining multiple calls to the 
+`scoreScale()` function.  In fact, most of the functions in the **PROscorer**
+package call `scoreScale()` multiple times.
 
 
 
@@ -136,6 +137,6 @@ vignettes](https://CRAN.R-project.org/package=PROscorerTools).
 
 * For examples on how to use the `scoreScale` function within a more complex
 scoring function, check out the source code for some of the functions in the
-[PROscorer](https://CRAN.R-project.org/package=PROscorer) package.
+**PROscorer** package.
 
 
