@@ -12,7 +12,7 @@
 
 <meta name="author" content="Ray Baser" />
 
-<meta name="date" content="2017-05-13" />
+<meta name="date" content="2017-05-14" />
 
 <title>Introduction to PROscorerTools</title>
 
@@ -70,7 +70,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <h1 class="title toc-ignore">Introduction to PROscorerTools</h1>
 <h4 class="author"><em>Ray Baser</em></h4>
-<h4 class="date"><em>2017-05-13</em></h4>
+<h4 class="date"><em>2017-05-14</em></h4>
 
 
 <div id="TOC">
@@ -85,7 +85,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 
 <div id="overview" class="section level2">
 <h2>Overview</h2>
-<p>PROscorerTools provides tools to score patient-reported outcome (PRO) measures and other quality of life (QoL) and psychometric instruments. PROscorerTools also provides the building blocks of the functions in the <a href="https://CRAN.R-project.org/package=PROscorer">PROscorer</a> package.</p>
+<p>PROscorerTools provides tools to score patient-reported outcome (PRO) measures and other quality of life (QoL) and psychometric instruments. PROscorerTools also provides the building blocks of the functions in the <strong>PROscorer</strong> package.</p>
 <p>PROscorerTools contains several “helper” functions, each of which performs a specific task that is common when scoring PRO-like instruments (e.g., reverse coding items). But most users will find that the <code>scoreScale()</code> function alone can address their scoring needs.</p>
 </div>
 <div id="the-scorescale-function" class="section level2">
@@ -97,7 +97,7 @@ code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Inf
 <li><p><strong>Reverse Coding:</strong> Before calculating a score, <code>scoreScale()</code> can reverse code all of the items, only some specific items, or none of the items (no reverse coding is the default).</p></li>
 <li><p><strong>Different Types of Scores:</strong> Some instruments need to be scored by summing item responses, others by taking the mean of item responses, and others by re-scaling the sum or mean scores to range from 0 to 100. All 3 of these score types are available in the <code>scoreScale()</code> function.</p></li>
 <li><p><strong>Calculation of Scores with Missing Items:</strong> For most instruments, valid scores can be obtained despite a certain number of missing item responses. For example, on the EORTC QLQ-C30, a score can be calculated as long as at least 50% of items on a given scale are non-missing. The <code>scoreScale()</code> function allows the user to specify the proportion of missing items that is allowed, and the score is prorated to be comparable to scores with no missing items. If a respondent has more than the allowed proportion of missing items, then that respondent will be assigned a missing score (e.g., <code>NA</code>).</p></li>
-<li><p><strong>Scoring Instruments with Multiple Scores:</strong> More complex instruments that yield more than a single score can be scored by combining multiple calls to the <code>scoreScale()</code> function. In fact, most of the functions in the <a href="https://CRAN.R-project.org/package=PROscorer">PROscorer</a> package call <code>scoreScale()</code> multiple times.</p></li>
+<li><p><strong>Scoring Instruments with Multiple Scores:</strong> More complex instruments that yield more than a single score can be scored by combining multiple calls to the <code>scoreScale()</code> function. In fact, most of the functions in the <strong>PROscorer</strong> package call <code>scoreScale()</code> multiple times.</p></li>
 </ul>
 </div>
 <div id="installation-and-basic-usage" class="section level2">
@@ -140,7 +140,7 @@ Before writing PROscorerTools, I had completely re-written most of the underlyin
 <li><p>You can access the “help” page for the PROscorerTools package by typing <code>?PROscorerTools</code> into R.</p></li>
 <li><p>If you have any feature requests, or you want to report bugs or other strange behavior in PROscorerTools, please submit them to me on the <a href="https://github.com/raybaser/PROscorerTools/issues">PROscorerTools GitHub page</a>:</p></li>
 <li><p>Check out the <a href="https://CRAN.R-project.org/package=PROscorerTools">PROscorerTools vignettes</a>.</p></li>
-<li><p>For examples on how to use the <code>scoreScale</code> function within a more complex scoring function, check out the source code for some of the functions in the <a href="https://CRAN.R-project.org/package=PROscorer">PROscorer</a> package.</p></li>
+<li><p>For examples on how to use the <code>scoreScale</code> function within a more complex scoring function, check out the source code for some of the functions in the <strong>PROscorer</strong> package.</p></li>
 </ul>
 </div>
 
