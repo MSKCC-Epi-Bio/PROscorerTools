@@ -4,8 +4,14 @@
 \alias{makeFakeData}
 \title{Make a data frame of fake item data}
 \usage{
-makeFakeData(n = 20, nitems = 9, values = 0:4, propmiss = 0.2,
-  prefix = "q", id = FALSE)
+makeFakeData(
+  n = 20,
+  nitems = 9,
+  values = 0:4,
+  propmiss = 0.2,
+  prefix = "q",
+  id = FALSE
+)
 }
 \arguments{
 \item{n}{The number of respondents (rows) in the fake data.  The default is

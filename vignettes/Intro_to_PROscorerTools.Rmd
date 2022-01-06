@@ -80,7 +80,7 @@ packages, then you can install the development version from GitHub (generally
 NOT recommended):
 
 ```{r eval=FALSE}
-devtools::install_github("raybaser/PROscorerTools")
+devtools::install_github("MSKCC-Epi-Bio/PROscorerTools")
 ```
 
 Load PROscorerTools in your R workspace:
@@ -161,9 +161,7 @@ already be tested by the PROscorerTools tests; however, I intend to come up with
 a standard set of tests for PROscorer functions to make it easier for me and
 others to add unit tests to their scoring functions.
 
-3.  Expand PROscorer with more scoring functions for specific PROs.  I will have
-to do this for my job anyway, but writing new scoring functions will also help
-with programming #1 and #2 above.
+3.  Expand PROscorer with more scoring functions for specific PROs. 
 
 4.  Finalize the collaborative infrastructure (e.g., on GitHub) by which users
 can use PROscorerTools to write scoring functions for their favorite PROs and
@@ -196,7 +194,7 @@ accessible to a much wider group of researchers.
 
 * If you have any feature requests, or you want to report bugs or other strange
 behavior in PROscorerTools, please submit them to me on the [PROscorerTools
-GitHub page](https://github.com/raybaser/PROscorerTools/issues):
+GitHub page](https://github.com/MSKCC-Epi-Bio/PROscorerTools/issues):
 
 * Check out the [PROscorerTools
 vignettes](https://CRAN.R-project.org/package=PROscorerTools).

@@ -1,7 +1,7 @@
 Package: PROscorerTools
 Type: Package
 Title: Tools to Score Patient-Reported Outcome (PRO) and Other Psychometric Measures
-Version: 0.0.1
+Version: 0.0.1.9000
 Authors@R: person("Ray", "Baser", email="ray.stats@gmail.com", role=c("aut", "cre"))
 Description: Provides a reliable and flexible toolbox to score 
     patient-reported outcome (PRO), Quality of Life (QOL), and other 
@@ -29,10 +29,10 @@ Description: Provides a reliable and flexible toolbox to score
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-URL: http://github.com/raybaser/PROscorerTools
-BugReports: http://github.com/raybaser/PROscorerTools/issues
+URL: https://github.com/MSKCC-Epi-Bio/PROscorerTools
+BugReports: https://github.com/MSKCC-Epi-Bio/PROscorerTools/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.2
 Suggests: testthat,
     knitr,
     rmarkdown,

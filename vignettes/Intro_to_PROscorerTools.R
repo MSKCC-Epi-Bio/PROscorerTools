@@ -9,7 +9,7 @@ knitr::opts_chunk$set(
 #  install.packages("PROscorerTools")
 
 ## ----eval=FALSE----------------------------------------------------------
-#  devtools::install_github("raybaser/PROscorerTools")
+#  devtools::install_github("MSKCC-Epi-Bio/PROscorerTools")
 
 ## ----eval = FALSE--------------------------------------------------------
 #  library(PROscorerTools)

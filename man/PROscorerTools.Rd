@@ -3,7 +3,6 @@
 \docType{package}
 \name{PROscorerTools}
 \alias{PROscorerTools}
-\alias{PROscorerTools-package}
 \title{PROscorerTools}
 \description{
 Tools to score Patient-Reported Outcome (PRO), Quality

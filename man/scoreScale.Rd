@@ -4,9 +4,16 @@
 \alias{scoreScale}
 \title{Flexible function to score a single PRO or other psychometric scale}
 \usage{
-scoreScale(df, items = NULL, revitems = FALSE, minmax = NULL,
-  okmiss = 0.5, type = c("pomp", "100", "sum", "mean"),
-  scalename = "scoredScale", keepNvalid = FALSE)
+scoreScale(
+  df,
+  items = NULL,
+  revitems = FALSE,
+  minmax = NULL,
+  okmiss = 0.5,
+  type = c("pomp", "100", "sum", "mean"),
+  scalename = "scoredScale",
+  keepNvalid = FALSE
+)
 }
 \arguments{
 \item{df}{A data frame containing the items you wish to score.  It can
