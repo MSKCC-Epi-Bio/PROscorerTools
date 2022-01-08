@@ -168,7 +168,9 @@ scoreScale <- function( df,
 
 
 ## CHECK revitems    --------------------------------------
-  if (revitems != FALSE && !is.null(revitems)) {
+  if (isTRUE(revitems) || (!is.logical(revitems) && !is.null(revitems))) {
+  # if (!is.logical(revitems) && !is.null(revitems)) {
+  # if (revitems != FALSE && !is.null(revitems)) {
   # Checking if revitems values are in dfItems, and if minmax is given.
     chkstop_revitems(df=df, dfItems=dfItems, revitems=revitems,
                      items=items, minmax=minmax)
@@ -189,9 +191,10 @@ scoreScale <- function( df,
 
 ## GET a version of dfItems that has reversed items
 ## ? Need to return(dfItems) in get_dfItemsrev?
-  dfItems <- get_dfItemsrev(df=df, dfItems=dfItems,
-                            revitems=revitems, minmax=minmax)
-
+  if(isTRUE(revitems) || (!is.logical(revitems) && !is.null(revitems))) {
+    dfItems <- get_dfItemsrev(df=df, dfItems=dfItems,
+                              revitems=revitems, minmax=minmax)
+  }
 ##### NOW, dfItems should be a df with the items,
 ##### with the appropriate items reversed as indicated by revitems.
 ## 5. Now should have dfItems with the proper items reversed, ready to score.

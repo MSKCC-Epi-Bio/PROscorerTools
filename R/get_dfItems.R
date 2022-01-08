@@ -50,9 +50,10 @@ get_dfItems <- function(df, items) {
 #'
 #' @rdname get_dfItems
 get_dfItemsrev <- function(df, dfItems, revitems, minmax) {
-  if (revitems != FALSE && !is.null(revitems)) {
+  # if (revitems != FALSE && !is.null(revitems)) {
     ##  a. If revitems = TRUE, just reverse all items in dfItems.
-    if (is.logical(revitems) && revitems == TRUE) {
+    if (isTRUE(revitems)) {
+    # if (is.logical(revitems) && revitems == TRUE) {
       dfItems[] <- lapply(dfItems[], revcode, mn = minmax[1], mx = minmax[2])
     }
     ##  b. If revitems = character, Reverse items in dfItems by names in revitems
@@ -68,6 +69,6 @@ get_dfItemsrev <- function(df, dfItems, revitems, minmax) {
       dfItems[namesRev] <- lapply(dfItems[namesRev], revcode,
                                   mn = minmax[1], mx = minmax[2])
     }
-  }
+  # }
   dfItems
 }
