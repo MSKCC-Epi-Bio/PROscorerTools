@@ -21,7 +21,7 @@ knitr::opts_chunk$set(
 
 PROscorerTools provides tools to score patient-reported outcome (PRO) measures 
 and other quality of life (QoL) and psychometric instruments.   PROscorerTools
-also provids the building blocks of the functions in the PROscorer package.
+also provides the building blocks of the functions in the PROscorer package.
 
 PROscorerTools contains several "helper" functions, each of which performs a
 specific task that is common when scoring PRO-like instruments (e.g., reverse
