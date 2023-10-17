@@ -118,6 +118,4 @@
 #'
 #'
 #' @name PROscorerTools
-#'
-#' @docType package
-NULL
+"_PACKAGE"

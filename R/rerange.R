@@ -70,26 +70,28 @@ rerange <- function(score,
     stop("score contains at least 1 value greater than the upper end
          of the 'old' range you provided")
   }
-  if ( old[1] < min(score, na.rm = TRUE) ) {
-    warning(paste(strwrap(
-      "The lower bound of the 'old' range you provided is smaller than the
-      minimum value observed in the data you provided to 'score'.
-      Please double-check that you gave the correct range to the 'old' argument
-      (it should be the range of values your data can theoretically take),
-      and that the values of 'score' are coded correctly.  If both are correct,
-      you can ignore this warning.", exdent = 2),
-      collapse = "\n"))
-  }
-  if (old[2] > max(score, na.rm = TRUE) ) {
-    warning(paste(strwrap(
-      "The upper bound of the 'old' range you provided is larger than the
-      maximum value observed in the data you provided to 'score'.
-      Please double-check that you gave the correct range to the 'old' argument
-      (it should be the range of values your data can theoretically take),
-      and that the values of 'score' are coded correctly.  If both are correct,
-      you can ignore this warning.", exdent = 2),
-      collapse = "\n"))
-  }
+### These warnings are too long and probably overzealous... omit for now,
+### maybe revise later.
+  # if ( old[1] < min(score, na.rm = TRUE) ) {
+  #   warning(paste(strwrap(
+  #     "The lower bound of the 'old' range you provided is smaller than the
+  #     minimum value observed in the data you provided to 'score'.
+  #     Please double-check that you gave the correct range to the 'old' argument
+  #     (it should be the range of values your data can theoretically take),
+  #     and that the values of 'score' are coded correctly.  If both are correct,
+  #     you can ignore this warning.", exdent = 2),
+  #     collapse = "\n"))
+  # }
+  # if (old[2] > max(score, na.rm = TRUE) ) {
+  #   warning(paste(strwrap(
+  #     "The upper bound of the 'old' range you provided is larger than the
+  #     maximum value observed in the data you provided to 'score'.
+  #     Please double-check that you gave the correct range to the 'old' argument
+  #     (it should be the range of values your data can theoretically take),
+  #     and that the values of 'score' are coded correctly.  If both are correct,
+  #     you can ignore this warning.", exdent = 2),
+  #     collapse = "\n"))
+  # }
   oldmin <- old[1]
   oldmax <- old[2]
   oldDiff <- oldmax - oldmin

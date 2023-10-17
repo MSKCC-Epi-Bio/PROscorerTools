@@ -4,7 +4,7 @@
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/PROscorerTools)](https://cran.r-project.org/package=PROscorerTools)
 
 [![Coverage
-Status](https://img.shields.io/codecov/c/github/MSKCC-Epi-Bio/PROscorerTools/master.svg)](https://codecov.io/github/MSKCC-Epi-Bio/PROscorerTools?branch=master)
+Status](https://img.shields.io/codecov/c/github/MSKCC-Epi-Bio/PROscorerTools/master.svg)](https://app.codecov.io/github/MSKCC-Epi-Bio/PROscorerTools?branch=master)
 
 # PROscorerTools
 

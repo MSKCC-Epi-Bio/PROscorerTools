@@ -3,6 +3,7 @@
 \docType{package}
 \name{PROscorerTools}
 \alias{PROscorerTools}
+\alias{PROscorerTools-package}
 \title{PROscorerTools}
 \description{
 Tools to score Patient-Reported Outcome (PRO), Quality
@@ -126,3 +127,15 @@ functions change.
 }
 }
 
+\seealso{
+Useful links:
+\itemize{
+  \item \url{https://github.com/MSKCC-Epi-Bio/PROscorerTools}
+  \item Report bugs at \url{https://github.com/MSKCC-Epi-Bio/PROscorerTools/issues}
+}
+
+}
+\author{
+\strong{Maintainer}: Ray Baser \email{ray.stats@gmail.com}
+
+}
