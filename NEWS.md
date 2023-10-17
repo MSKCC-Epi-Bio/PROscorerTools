@@ -1,8 +1,11 @@
-# PROscorerTools 0.0.3 (2023-10-17)
+# PROscorerTools 0.0.4 (2023-10-17)
 
 * Omitted some overzealous warnings for some of the functions (e.g., `rerange`)
 
 * Tiny change to package overview documentation to align with CRAN policy. 
+
+* Changed lists in package overview documentation to markdown format to fix CRAN note.
+
 
 # PROscorerTools 0.0.2 (2022-03-07)
 

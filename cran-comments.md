@@ -8,6 +8,7 @@
 
 0 errors | 0 warnings | 0 notes
 
+* This re-submission attempts to fix problems in CRAN pre-tests on Debian system regarding incorrect usage of \itemize in documentation.  
 * This submission updates package overview help file with package sentinel "_PACKAGE" to get back all defaults for package documentation.
 * My email address is correct.  
 

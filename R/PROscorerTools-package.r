@@ -9,7 +9,7 @@
 #'   \pkg{PROscorerTools} provides the infrastructure for the scoring functions
 #'   in the \pkg{PROscorer} package.
 #'
-#'   The \code{\link{scoreScale}} function is the workhorse of
+#'   The [`scoreScale`] function is the workhorse of
 #'   \pkg{PROscorerTools}, and it can be used to score most single-scale
 #'   measures. For example, it can reverse code some or all items before
 #'   scoring, and it can generate different types of scores (sum scores, mean
@@ -17,15 +17,15 @@
 #'   \pkg{PROscorerTools} functions can be used together to flexibly write new
 #'   functions that score more complex, multi-scale measures.
 #'
-#'   The \code{\link{scoreScale}} function itself is composed of other
+#'   The [`scoreScale`] function itself is composed of other
 #'   \pkg{PROscorerTools} helper functions.  This is an intentional feature of
 #'   the \pkg{PROscorerTools} and \pkg{PROscorer} system.  It represents the
 #'   central design philosophy that all scoring functions should be modularly
 #'   composed of a small number of well-tested, reliable helper functions.  This
 #'   important feature minimizes the possibility of scoring errors and other
-#'   unexpected behaviors.  This starts with the \code{\link{scoreScale}}
+#'   unexpected behaviors.  This starts with the [`scoreScale`]
 #'   function, and the benefits extend to the \pkg{PROscorer} functions and any
-#'   other scoring function that uses \code{\link{scoreScale}} as its backbone.
+#'   other scoring function that uses [`scoreScale`] as its backbone.
 #'
 #'   Scoring procedures represent a major source of error in research studies
 #'   that rely upon PRO and similar measures.  These errors typically go
@@ -42,30 +42,27 @@
 #' @section Overview of Functions:
 #'
 #' \strong{Main scoring workhorse:}
-#' \itemize{
-#'   \item{\code{\link{scoreScale}}}{:  Scores a single scale score from a set
+#' *  [`scoreScale`]:  Scores a single scale score from a set
 #'     of items.  Has flexible arguments allowing almost any type of single
 #'     scale to be scored.  Can be used as the primary building block of more
 #'     complex scoring functions.  For example, if you are writing a new
 #'     function to score an instrument with 4 subscales, you can call
-#'     \code{\link{scoreScale}} 4 times from within your function, once for each
-#'     subscale.}
-#' }
+#'     [`scoreScale`] 4 times from within your function, once for each
+#'     subscale.
 #'
 #' \strong{Functions useful within another scoring function, or on their own:}
-#' \itemize{
-#'   \item{\code{\link{missTally}}}{:  Count the number or proportion of items
-#'     missing (or non-missing) for each subject.}
-#'   \item{\code{\link{rerange}}}{:  Linearly rescale a variable to have new min
-#'     and max values of the user's choosing.}
-#'   \item{\code{\link{rerange100}}}{:  Like \code{\link{rerange}}, but the
-#'     variable is rescaled to range from 0 to 100.}
-#'   \item{\code{\link{revcode}}}{:  Reverse code the values of an item or score.}
-#'   \item{\code{\link{makeItemNames}}}{:  Easily make a vector of item names,
-#'     e.g., \code{c("Q1", "Q2", "Q3")}.}
-#'   \item{\code{\link{makeFakeData}}}{:  Quick and dirty way to generate fake
-#'     item data to test scoring functions.}
-#' }
+#' *  [`missTally`]:  Count the number or proportion of items missing (or
+#'    non-missing) for each subject.
+#' *  [`rerange`]:  Linearly rescale a variable to have new min and max values
+#'    of the user's choosing.
+#' *  [`rerange100`]:  Like [`rerange`], but the variable is rescaled
+#'    to range from 0 to 100.
+#' *  [`revcode`]:  Reverse code the values of an item or score.
+#' *  [`makeItemNames`]:  Easily make a vector of item names,
+#'     e.g., `c("Q1", "Q2", "Q3")`.
+#' *  [`makeFakeData`]:  Quick and dirty way to generate fake item data to test
+#'    scoring functions.
+
 #'
 #' \strong{Functions mainly useful only within another scoring function:}
 #'
@@ -76,46 +73,41 @@
 #' package, and/or be deprecated in favor of a more streamlined system (e.g.,
 #' using the \pkg{assertive} package).
 #'
-#' \itemize{
-#'   \item{\code{\link{msgWrap}}}{:  Used inside of \code{paste} to help
-#'     line-wrap long error and warning messages.}
-#'   \item{\code{\link{chk_nitems}}}{:  Checks if a data frame has the correct
-#'     number of items.}
-#'   \item{\code{\link{chkstop_nitems}}}{:  Checks if a data frame has the correct
-#'     number of items, and gives an error message if it does not.}
-#'   \item{\code{\link{chk_values}}}{:  Checks if all item values in a data
-#'     frame are in the expected set of possible values.}
-#'   \item{\code{\link{chkstop_values}}}{:  Checks if all item values in a data
-#'     frame are in the expected set of possible values, and gives an error
-#'     message if this is not true.}
-#'   \item{\code{\link{get_dfItems}}}{:  Given a data frame and an item index,
-#'     returns a data frame containing only the items.}
-#'   \item{\code{\link{get_dfItemsrev}}}{:  Like \code{\link{get_dfItems}}, but
-#'     will also reverse code some or all of the items.}
-#' }
+#' *  [`msgWrap`]:  Used inside of \code{paste} to help line-wrap long error
+#'    and warning messages.
+#' *  [`chk_nitems`]:  Checks if a data frame has the correct number of items.
+#' *  [`chkstop_nitems`]:  Checks if a data frame has the correct number of
+#'    items, and gives an error message if it does not.
+#' *  [`chk_values`]:  Checks if all item values in a data frame are in the
+#'    expected set of possible values.
+#' *  [`chkstop_values`]:  Checks if all item values in a data frame are in the
+#'    expected set of possible values, and gives an error message if this is
+#'    not true.
+#' *  [`get_dfItems`]:  Given a data frame and an item index, returns a data
+#'    frame containing only the items.
+#' *  [`get_dfItemsrev`]:  Like [`get_dfItems`], but will also reverse code
+#'    some or all of the items.
 #'
-#' @section Internal Functions Used by \code{\link{scoreScale}}:
 #'
-#' These are internal functions used to make the \code{\link{scoreScale}}
+#' @section Internal Functions Used by [`scoreScale`]:
+#'
+#' These are internal functions used to make the [`scoreScale`]
 #' function more modular, and are used exclusively to check the arguments to
 #' that function.  They will likely be of little use to others, and will
 #' probably change in a near-future version of the package, or be deprecated
 #' altogether in favor of a more streamlined system (e.g., using the
 #' \pkg{assertive} package).  They are documented here only for development
 #' purposes.  \strong{NOTE}: The interface and functionality of the
-#' \code{\link{scoreScale}} function will remain stable, even if/when these
+#' [`scoreScale`] function will remain stable, even if/when these
 #' functions change.
 #'
-#' \itemize{
-#'   \item{\code{\link{chkstop_df}}}{:  }
-#'   \item{\code{\link{chkstop_okmiss}}}{:  }
-#'   \item{\code{\link{chkstop_type}}}{:  }
-#'   \item{\code{\link{chkstop_revitems}}}{:  }
-#'   \item{\code{\link{chk_imin}}}{:  }
-#'   \item{\code{\link{chk_imax}}}{:  }
-#'   \item{\code{\link{chkstop_minmax}}}{:  }
-#' }
-#'
+#' * [`chkstop_df`]
+#' * [`chkstop_okmiss`]
+#' * [`chkstop_type`]
+#' * [`chkstop_revitems`]
+#' * [`chk_imin`]
+#' * [`chk_imax`]
+#' * [`chkstop_minmax`]
 #'
 #' @name PROscorerTools
 "_PACKAGE"

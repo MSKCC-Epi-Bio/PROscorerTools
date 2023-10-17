@@ -51,28 +51,28 @@ used in research.
 
 \strong{Main scoring workhorse:}
 \itemize{
-\item{\code{\link{scoreScale}}}{:  Scores a single scale score from a set
+\item \code{\link{scoreScale}}:  Scores a single scale score from a set
 of items.  Has flexible arguments allowing almost any type of single
 scale to be scored.  Can be used as the primary building block of more
 complex scoring functions.  For example, if you are writing a new
 function to score an instrument with 4 subscales, you can call
 \code{\link{scoreScale}} 4 times from within your function, once for each
-subscale.}
+subscale.
 }
 
 \strong{Functions useful within another scoring function, or on their own:}
 \itemize{
-\item{\code{\link{missTally}}}{:  Count the number or proportion of items
-missing (or non-missing) for each subject.}
-\item{\code{\link{rerange}}}{:  Linearly rescale a variable to have new min
-and max values of the user's choosing.}
-\item{\code{\link{rerange100}}}{:  Like \code{\link{rerange}}, but the
-variable is rescaled to range from 0 to 100.}
-\item{\code{\link{revcode}}}{:  Reverse code the values of an item or score.}
-\item{\code{\link{makeItemNames}}}{:  Easily make a vector of item names,
-e.g., \code{c("Q1", "Q2", "Q3")}.}
-\item{\code{\link{makeFakeData}}}{:  Quick and dirty way to generate fake
-item data to test scoring functions.}
+\item \code{\link{missTally}}:  Count the number or proportion of items missing (or
+non-missing) for each subject.
+\item \code{\link{rerange}}:  Linearly rescale a variable to have new min and max values
+of the user's choosing.
+\item \code{\link{rerange100}}:  Like \code{\link{rerange}}, but the variable is rescaled
+to range from 0 to 100.
+\item \code{\link{revcode}}:  Reverse code the values of an item or score.
+\item \code{\link{makeItemNames}}:  Easily make a vector of item names,
+e.g., \code{c("Q1", "Q2", "Q3")}.
+\item \code{\link{makeFakeData}}:  Quick and dirty way to generate fake item data to test
+scoring functions.
 }
 
 \strong{Functions mainly useful only within another scoring function:}
@@ -83,23 +83,21 @@ scoring functions, and to perform some minimal processing of function input.
 all) will likely undergo substantial changes in a near-future version of the
 package, and/or be deprecated in favor of a more streamlined system (e.g.,
 using the \pkg{assertive} package).
-
 \itemize{
-\item{\code{\link{msgWrap}}}{:  Used inside of \code{paste} to help
-line-wrap long error and warning messages.}
-\item{\code{\link{chk_nitems}}}{:  Checks if a data frame has the correct
-number of items.}
-\item{\code{\link{chkstop_nitems}}}{:  Checks if a data frame has the correct
-number of items, and gives an error message if it does not.}
-\item{\code{\link{chk_values}}}{:  Checks if all item values in a data
-frame are in the expected set of possible values.}
-\item{\code{\link{chkstop_values}}}{:  Checks if all item values in a data
-frame are in the expected set of possible values, and gives an error
-message if this is not true.}
-\item{\code{\link{get_dfItems}}}{:  Given a data frame and an item index,
-returns a data frame containing only the items.}
-\item{\code{\link{get_dfItemsrev}}}{:  Like \code{\link{get_dfItems}}, but
-will also reverse code some or all of the items.}
+\item \code{\link{msgWrap}}:  Used inside of \code{paste} to help line-wrap long error
+and warning messages.
+\item \code{\link{chk_nitems}}:  Checks if a data frame has the correct number of items.
+\item \code{\link{chkstop_nitems}}:  Checks if a data frame has the correct number of
+items, and gives an error message if it does not.
+\item \code{\link{chk_values}}:  Checks if all item values in a data frame are in the
+expected set of possible values.
+\item \code{\link{chkstop_values}}:  Checks if all item values in a data frame are in the
+expected set of possible values, and gives an error message if this is
+not true.
+\item \code{\link{get_dfItems}}:  Given a data frame and an item index, returns a data
+frame containing only the items.
+\item \code{\link{get_dfItemsrev}}:  Like \code{\link{get_dfItems}}, but will also reverse code
+some or all of the items.
 }
 }
 
@@ -115,15 +113,14 @@ altogether in favor of a more streamlined system (e.g., using the
 purposes.  \strong{NOTE}: The interface and functionality of the
 \code{\link{scoreScale}} function will remain stable, even if/when these
 functions change.
-
 \itemize{
-\item{\code{\link{chkstop_df}}}{:  }
-\item{\code{\link{chkstop_okmiss}}}{:  }
-\item{\code{\link{chkstop_type}}}{:  }
-\item{\code{\link{chkstop_revitems}}}{:  }
-\item{\code{\link{chk_imin}}}{:  }
-\item{\code{\link{chk_imax}}}{:  }
-\item{\code{\link{chkstop_minmax}}}{:  }
+\item \code{\link{chkstop_df}}
+\item \code{\link{chkstop_okmiss}}
+\item \code{\link{chkstop_type}}
+\item \code{\link{chkstop_revitems}}
+\item \code{\link{chk_imin}}
+\item \code{\link{chk_imax}}
+\item \code{\link{chkstop_minmax}}
 }
 }
 
